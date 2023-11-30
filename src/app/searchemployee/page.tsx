@@ -1,34 +1,37 @@
 "use client";
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
-import 'src/app/adminstyles/searchem.css';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
+import "src/app/adminstyles/searchem.css";
+
 import {
-    faChartLine,
-    faUserPlus,
-    faFile,
-    faRightFromBracket, 
-    faUser,
-    faHouse,
-    faUserGroup,
-    faGraduationCap,
-    faMedkit,
-    faBicycle,
-    faSearch,
-    faHistory,
-    faReceipt// Changed from faRightFromBracket
-  } from '@fortawesome/free-solid-svg-icons';
-  export default function About () {
+  faChartLine,
+  faUserPlus,
+  faFile,
+  faRightFromBracket,
+  faUser,
+  faHouse,
+  faUserGroup,
+  faGraduationCap,
+  faMedkit,
+  faBicycle,
+  faSearch,
+  faHistory,
+  faReceipt,
+  faFileEdit,
+  faLeftLong,
+  faCircle, // Changed from faRightFromBracket
+} from "@fortawesome/free-solid-svg-icons";
+export default function About() {
   const [activeNavItem, setActiveNavItem] = useState(0);
 
   const navItems = [
-    'Basic Information',
-    'Address Information',
-    'Family Background',
-    'Educational Background',
-    'Medical Information',
-    'Skills & Hobbies',
-    
+    "Basic Information",
+    "Address Information",
+    "Family Background",
+    "Educational Background",
+    "Medical Information",
+    "Skills & Hobbies",
   ];
 
   const handleNavItemClick = (index) => {
@@ -37,77 +40,60 @@ import {
 
   const [formData, setFormData] = useState({
     //basic info
-    status: '',
-    religion: '',
-    birthplace:'',
-    Phone:'',
-    gender:'',
-  //address info
-  blk: '',
-  street: '',
- barangay:'',
-  city:'',
-  region:'',
-  zipcode:'',
-  //fam back 
-  father: '',
-    M_maiden: '',
-    sibling: '',
-    F_Attainment: '',
-    M_Attainment: '',
-    M_Occupation: '',
-    F_Occupation: '',
+    fName:"",
+    status: "",
+    religion: "",
+    birthplace: "",
+    Phone: "",
+    gender: "",
+    //address info
+    blk: "",
+    street: "",
+    barangay: "",
+    city: "",
+    region: "",
+    zipcode: "",
+    //fam back
+    father: "",
+    M_maiden: "",
+    sibling: "",
+    F_Attainment: "",
+    M_Attainment: "",
+    M_Occupation: "",
+    F_Occupation: "",
     //school
-    tertiary:'',
-    secondary:'',
-    primary:'',
+    tertiary: "",
+    secondary: "",
+    primary: "",
     //med his
-    height: '',
-    weight: '',
-    blood: '',
-    med_his: '',
+    height: "",
+    weight: "",
+    blood: "",
+    med_his: "",
     //skill
-    skill:'',
-    hobbies:'',
+    skill: "",
+    hobbies: "",
   });
   const [editMode, setEditMode] = useState({
-    status: false,
-    religion: false,
-    birthplace:false,
-    Phone:false,
-    gender:false,
-    //address info
-    blk: false,
-    street: false,
-    barangay: false,
-    city:false,
-    region:false,
-    zipcode:false,
-    //fam back
-    father: false,
-    M_maiden: false,
-    sibling: false,
-    F_Attainment: false,
-    M_Attainment: false,
-    M_Occupation: false,
-    F_Occupation: false,
-//school
-    tertiary:false,
-    secondary:false,
-    primary:false,
-    //med his 
-    height: false,
-    weight: false,
-    blood: false,
-    med_his: false,
-    //skill
-    skill:false,
-    hobbies:false,
 
-    
-
+    basicinfo: false,
+    AddressInfo:false,
+    fambackground:false,
+    educbackground:false,
+    medBackground:false,
+    skillhobby:false,
   });
-
+  function getIconForNavItem(index) {
+    const icons = [
+      faUser,
+      faHouse,
+      faUserGroup,
+      faGraduationCap,
+      faMedkit,
+      faBicycle,
+    ];
+    return icons[index];
+  }
   const handleEditClick = (fieldName) => {
     setEditMode({
       ...editMode,
@@ -129,332 +115,345 @@ import {
       [fieldName]: value,
     });
   };
+  const [uiMode, setUIMode] = useState("main"); // 'main' or 'next'
 
-  return (
+  const handleSwitchUIMode = () => {
+    setUIMode(uiMode === "main" ? "next" : "main");
+  };
+  const data = [
+    {
+      requesterName: "Frhansriel Maniquiz",
+      position: " employee",
+      ID: "02",
+      accountstatus: "Deactivate",
+    },
+    {
+      requesterName: "Joseph Miana",
+      position: " admin",
+      ID: "002",
+      accountstatus: "Activate",
+    },
+    {
+      requesterName: "Lian Perez",
+      position: " admin",
+      ID: "01",
+      accountstatus: "Activate",
+    },
+    {
+      requesterName: "Charles Pascual",
+      position: " employee",
+      ID: "001",
+      accountstatus: "Deactivate",
+    },
 
-    <div>
-      <div className="Sidebar">
-        <header className="head"></header>
-
-        <ul>
-          <li>
-          <a href="#" className="logo">
-              <Image
-                  src="/images/logo.png"
-                  width={50}
-                  height={50}
-                  alt="Picture of the author"
-              />
-              <span className="nav-e">Admin</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="/admin">
-              <FontAwesomeIcon icon={faChartLine} className="fas" />
-              <span className="nav-item">Attendance</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="/addemployee">
-              <FontAwesomeIcon icon={faUserPlus} className="fas" />
-              <span className="nav-item">Add Employee</span>
-            </a>
-          </li>
-          <li>
-            <a href="/searchemployee" >
-              <FontAwesomeIcon icon={faSearch} className="fas" />
-              <span className="nav-item">Employee Info</span>
-            </a>
-          </li>
-          <li>
-            <a href="/approveemployee">
-              <FontAwesomeIcon icon={faFile} className="fas" />
-              <span className="nav-item">Request</span>
-            </a>
-          </li>
-          <li>
-                        <a href="/process">
-                            <FontAwesomeIcon icon={faReceipt} className="fas" />
-                            <span className="nav-item">Payslip-Process</span>
-                        </a>
-                    </li>
-                    <li>
-                    <a href="/report">
-            <FontAwesomeIcon icon={faHistory} className="fas" />
-            <span className="nav-item">Report</span>
-          </a>
-        </li>
-
-          <li>
-            <a href="/logins" className="logout">
-              <FontAwesomeIcon icon={faRightFromBracket} className="fas" />
-              <span className="nav-item">Log-Out</span>
-            </a>
-          </li>
-
-         
-        </ul>
-      </div>
-     
-      <div className="box1">
-   
-     
-            <p>Employee</p>
-      
-
-        </div>
-
-        <div className="box2">
-          <ul style={{ listStyle: 'none' }}>
-        
-            <p>Employee Information</p>
-     
-            {navItems.map((item, index) => (
-              <li key={index}>
-                <a onClick={() => handleNavItemClick(index)}>
-                <FontAwesomeIcon icon={getIconForNavItem(index)} className="fas" />
-                  <span className={`nav-item ${index === activeNavItem ? 'active' : ''}`}>{item}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="box3">{renderContentForNavItem(activeNavItem)}
-       
-        </div>
-        <div className="search-form">
-        <form>
-        <input type="text" id="search-input" />
-          <button type="button" onClick={() => {}}>
-            Search
-          </button>
-        </form>
-        </div>
-        
-      </div>
-   
-  );
-  function getIconForNavItem(index) {
-    const icons = [faUser, faHouse, faUserGroup, faGraduationCap, faMedkit, faBicycle];
-    return icons[index];
-  }
-
-  
-
-
-  
+    // Add more rows as needed
+  ];
+  //changing ui
+    
   function renderContentForNavItem(index) {
     switch (index) {
       case 0:
         return (
-          <div className="content-active">
+          <div className="conten-active">
             <h1>Basic Information</h1>
             <div className="employee-info">
-
               <div className="details">
-              <div className="form-group">
-        <label>Religion:</label>
-        {editMode.religion ? (
+              
+                <div className="form-group">
+            <label>Full Name: </label>
+            {editMode.basicinfo ? (
+              <>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.fName}
+                  onChange={(e) => handleInputChange(e, 'fName')}
+                />
+              </>
+            ) : (
+              <>
+                <span>{formData.fName}</span>
+              </>
+            )}
+          </div>
+          <div className="form-group">
+            <label>Religion: </label>
+            {editMode.basicinfo ? (
+              <>
+                <input
+                  type="text"
+                  name="religion"
+                  value={formData.religion}
+                  onChange={(e) => handleInputChange(e, 'religion')}
+                />
+              </>
+            ) : (
+              <>
+                <span>{formData.religion}</span>
+              </>
+            )}
+          </div>
+          <div className="form-group">
+            <label>Birthplace: </label>
+            {editMode.basicinfo ? (
+              <>
+                <input
+                  type="text"
+                  name="religion"
+                  value={formData.birthplace}
+                  onChange={(e) => handleInputChange(e, 'birthplace')}
+                />
+              </>
+            ) : (
+              <>
+                <span>{formData.birthplace}</span>
+              </>
+            )}
+          </div>
+          <div className="form-group">
+            <label>Civil Status: </label>
+            {editMode.basicinfo ? (
+              <>
+                <input
+                  type="text"
+                  name="civilstat"
+                  value={formData.status}
+                  onChange={(e) => handleInputChange(e, 'status')}
+                />
+              </>
+            ) : (
+              <>
+                <span>{formData.status}</span>
+              </>
+            )}
+          </div>
+          <div className="form-group">
+            <label>Gender: </label>
+            {editMode.basicinfo ? (
+              <>
+                <input
+                  type="text"
+                  name="gender"
+                  value={formData.gender}
+                  onChange={(e) => handleInputChange(e, 'gender')}
+                />
+              </>
+            ) : (
+              <>
+                <span>{formData.status}</span>
+              </>
+            )}
+          </div>
+          <div className="form-group">
+            <label>Phone No: </label>
+            {editMode.basicinfo ? (
+              <>
+                <input
+                  type="text"
+                  name="gender"
+                  value={formData.Phone}
+                  onChange={(e) => handleInputChange(e, 'Phone')}
+                />
+              </>
+            ) : (
+              <>
+                <span>{formData.Phone}</span>
+              </>
+            )}
+          </div>
+      <div className="btn my-custom-btn">
+     
+        {editMode.basicinfo? (
           <>
-            <input
-              type="text"
-              name="gender"
-              value={formData.religion}
-              onChange={(e) => handleInputChange(e, 'religion')}
-            />
+        
+      
 
              
-            <button onClick={() => handleSaveClick('religion')}>Save</button>
+            <button onClick={() => handleSaveClick('basicinfo')}>Save</button>
           </>
         ) : (
           <>
-            <span>{formData.religion}</span>
-            <button onClick={() => handleEditClick('religion')}>Edit</button>
+
+          
+            <button onClick={() => handleEditClick('basicinfo')}>Edit</button>
           </>
         )}
   </div>
+  </div>
+  </div>
+  </div>
+    );
 
-      <div className="form-group">
-        <label>Birthplace:</label>
-        {editMode.birthplace ? (
+      case 1:
+        return (
+          <div className="content active">
+            <h1>Address Information</h1>
+            <div className="employee-info">
+              <div className="details">
+
+              <div className="form-group">
+        <label>BlkNo:</label>
+        {editMode.AddressInfo ? (
           <>
             <input
               type="text"
-              name="birthplace"
-              value={formData.birthplace}
-              onChange={(e) => handleInputChange(e, 'birthplace')}
-            />
-
-             
-            <button onClick={() => handleSaveClick('birthplace')}>Save</button>
-          </>
-        ) : (
-          <>
-            <span>{formData.birthplace}</span>
-            <button onClick={() => handleEditClick('birthplace')}>Edit</button>
-          </>
-        )}
-      </div>
-
-      <div className="form-group">
-        <label>Status:</label>
-        {editMode.status ? (
-          <>
-            <input
-              type="text"
-              name="gender"
-              value={formData.status}
-              onChange={(e) => handleInputChange(e, 'status')}
-            />
-
-             
-            <button onClick={() => handleSaveClick('status')}>Save</button>
-          </>
-        ) : (
-          <>
-            <span>{formData.status}</span>
-            <button onClick={() => handleEditClick('status')}>Edit</button>
-          </>
-        )}
-      </div>
-
-      <div className="form-group">
-        <label>Gender:</label>
-        {editMode.gender ? (
-          <>
-            <input
-              type="text"
-              name="gender"
-              value={formData.gender}
-              onChange={(e) => handleInputChange(e, 'gender')}
-            />
-
-             
-            <button onClick={() => handleSaveClick('gender')}>Save</button>
-          </>
-        ) : (
-          <>
-            <span>{formData.gender}</span>
-            <button onClick={() => handleEditClick('gender')}>Edit</button>
-          </>
-        )}
-      </div>
-           
-      <div className="form-group">
-        <label>PhoneNo:</label>
-        {editMode.Phone ? (
-          <>
-            <input
-              type="text"
-              name="Phone"
+              name="blk"
               
-              value={formData.Phone}
-              onChange={(e) => handleInputChange(e, 'Phone')}
+              onChange={(e) => handleInputChange(e, 'blk')}
             />
-     
-     
-        {editMode.basicinfo? (
-          <>
 
-        {editMode.basicinfo? (
-          <>
-             
-            <button onClick={() => handleSaveClick('Phone')}>Save</button>
+        
           </>
         ) : (
           <>
-            <span>{formData.Phone}</span>
-            <button onClick={() => handleEditClick('Phone')}>Edit</button>
+            <span>{formData.blk}</span>
+          
           </>
         )}
       </div>
+      <div className="form-group">
+        <label>Street:</label>
+        {editMode.AddressInfo ? (
+          <>
+            <input
+              type="text"
+              name="street"
+              
+              onChange={(e) => handleInputChange(e, 'street')}
+            />
+
+             
+          
+          </>
+        ) : (
+          <>
+            <span>{formData.street}</span>
+         
+          </>
+        )}
+      </div>
+      <div className="form-group">
+        <label>Barangay:</label>
+        {editMode.AddressInfo ? (
+          <>
+            <input
+              type="text"
+              name="barangay"
+              
+              onChange={(e) => handleInputChange(e, 'barangay')}
+            />
+
+             
+            
+          </>
+        ) : (
+          <>
+            <span>{formData.barangay}</span>
+           
+          </>
+        )}
+      </div>
+      <div className="form-group">
+        <label>City:</label>
+        {editMode.AddressInfo? (
+          <>
+            <input
+              type="text"
+              name="city"
+              
+              onChange={(e) => handleInputChange(e, 'city')}
+            />
+
+             
+          </>
+        ) : (
+          <>
+            <span>{formData.city}</span>
+         
+          </>
+        )}
+      </div>
+      <div className="form-group">
+        <label>Region:</label>
+        {editMode.AddressInfo? (
+          <>
+            <input
+              type="text"
+              name="Region"
+              value={formData.region}
+              onChange={(e) => handleInputChange(e, 'region')}
+            />
+
+             
+            
+          </>
+        ) : (
+          <>
+            <span>{formData.region}</span>
+         
+          </>
+        )}
+      </div>
+            
+      <div className="form-group">
+        <label>ZipCode:</label>
+        {editMode.AddressInfo? (
+          <>
+            <input
+              type="text"
+              name="ZipCode"
+              value={formData.zipcode}
+              onChange={(e) => handleInputChange(e, 'zipcode')}
+            />
+
+             
+          
+          </>
+        ) : (
+          <>
+            <span>{formData.zipcode}</span>
+     
+          </>
+        )}
+      </div>
+            
+            
+          
+      <div className="btn my-custom-btn">
+     
+     {editMode.AddressInfo? (
+       <>
+     
+   
+
+          
+         <button onClick={() => handleSaveClick('AddressInfo')}>Save</button>
+       </>
+     ) : (
+       <>
+       
+         <button onClick={() => handleEditClick('AddressInfo')}>Edit</button>
+       </>
+     )}
+   </div>
               </div>
             </div>
           </div>
         );
 
 
-      case 1:
-        return (
-          <div className="content-active">
-            <h1>Address Information</h1>
-            <div className="employee-info">
-              <div className="details">
-
-              <div className="form-group">
-        <label>Address:</label>
-        {editMode.blk ? (
-          <>
-              
-              
-              onChange={(e) => handleInputChange(e, 'blk')}
-            />
-        
-              onChange={(e) => handleInputChange(e, 'blk')}
-            />
-
-     <div className="note">
-    <textarea  
-              name="Phone"
-              value={formData.blk}
-              onChange={(e) => handleInputChange(e, 'blk')}></textarea>
- 
-      </div>
-      </div>
-      <div className="form-group">
-        <label>Street:</label>
-        {editMode.AddressInfo ? (
-          <>
-            <input
-              type="text"
-              name="street"
-              
-              onChange={(e) => handleInputChange(e, 'street')}
-            />
-
-</div>
-      <div className="form-group">
-        <label>Street:</label>
-        {editMode.AddressInfo ? (
-          <>
-            <input
-              type="text"
-              name="street"
-              
-              onChange={(e) => handleInputChange(e, 'street')}
-            />
-
-
-             
-            <button onClick={() => handleSaveClick('blk')}>Save</button>
-          </>
-        ) : (
-          <>
-          <div className="note">
-            <textarea readOnly className="address">{formData.blk}</textarea>
-            </div>
-            <button onClick={() => handleEditClick('blk')}>Edit</button>
-          </>
-        )}
-      </div>
-     </div>
-     </div>
-     </div>
-);
       case 2:
         return (
-          <div className="content-active">
+          <div className="content active">
             <h1>Family Background</h1>
             <div className="employee-info">
               <div className="details">
                 
-    
+     
 
        <div className="form-group">
         <label>Father:</label>
-        {editMode.father ? (
+        {editMode.fambackground ? (
           <>
             <input
               type="text"
@@ -464,12 +463,12 @@ import {
             />
 
              
-            <button onClick={() => handleSaveClick('father')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.father}</span>
-            <button onClick={() => handleEditClick('father')}>Edit</button>
+            
           </>
         )}
       </div>
@@ -477,155 +476,134 @@ import {
 
       <div className="form-group">
         <label>Mother Maiden Name:</label>
-        {editMode.M_maiden ? (
+        {editMode.fambackground  ? (
           <>
             <input
               type="text"
-              name="M_maiden"
+              name="father"
               value={formData.M_maiden}
               onChange={(e) => handleInputChange(e, 'M_maiden')}
             />
 
              
-            <button onClick={() => handleSaveClick('M_maiden')}>Save</button>
+         
           </>
         ) : (
           <>
             <span>{formData.M_maiden}</span>
-            <button onClick={() => handleEditClick('M_maiden')}>Edit</button>
+           
           </>
         )}
       </div>
 
       <div className="form-group">
         <label>Siblings:</label>
-        {editMode.sibling ? (
+        {editMode.fambackground ? (
           <>
             <input
               type="text"
-              name="sibling "
+              name="father"
               value={formData.sibling}
               onChange={(e) => handleInputChange(e, 'sibling')}
             />
 
              
-            <button onClick={() => handleSaveClick('sibling')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.sibling}</span>
-            <button onClick={() => handleEditClick('sibling')}>Edit</button>
+        
           </>
         )}
       </div>
-
       <div className="form-group">
-        <label>{"Father's Attainment:"}</label>
-        {editMode.F_Attainment ? (
+        <label>Fathers Attainment:</label>
+        {editMode.fambackground ? (
           <>
             <input
               type="text"
-              name="F_Attainment "
+              name="father"
               value={formData.F_Attainment}
               onChange={(e) => handleInputChange(e, 'F_Attainment')}
             />
 
              
-            <button onClick={() => handleSaveClick('F_Attainment')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.F_Attainment}</span>
-            <button onClick={() => handleEditClick('F_Attainment')}>Edit</button>
+        
           </>
         )}
       </div>
-
-     
       <div className="form-group">
-        <label>{"Mother's Attainment:"}</label>
-        {editMode.M_Attainment ? (
+        <label>Mophters Attainment</label>
+        {editMode.fambackground ? (
           <>
             <input
               type="text"
-              name="M_Attainment"
+              name="father"
               value={formData.M_Attainment}
               onChange={(e) => handleInputChange(e, 'M_Attainment')}
             />
 
              
-            <button onClick={() => handleSaveClick('M_Attainment')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.M_Attainment}</span>
-            <button onClick={() => handleEditClick('M_Attainment')}>Edit</button>
+        
           </>
         )}
       </div>
-
-            
       <div className="form-group">
-        <label>{"Father's Occupation:"}:</label>
-        {editMode.F_Occupation ? (
+        <label>Fathers Occupation:</label>
+        {editMode.fambackground ? (
           <>
             <input
               type="text"
-              name="F_Occupation "
-              value={formData.F_Occupation }
+              name="father"
+              value={formData.F_Occupation}
               onChange={(e) => handleInputChange(e, 'F_Occupation')}
             />
 
              
-            <button onClick={() => handleSaveClick('F_Occupation')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.F_Occupation}</span>
-            <button onClick={() => handleEditClick('F_Occupation')}>Edit</button>
+        
           </>
         )}
       </div>
-
+            
       <div className="form-group">
-        <label>{"Mother's Occupation:"}</label>
-        {editMode.M_Occupation ? (
+        <label>Fathers Occupation:</label>
+        {editMode.fambackground ? (
           <>
             <input
               type="text"
-              name="M_Occupation"
+              name="father"
               value={formData.M_Occupation}
-              onChange={(e) => handleInputChange(e, 'M_Occupation ')}
+              onChange={(e) => handleInputChange(e, 'M_Occupation')}
             />
 
              
-            <button onClick={() => handleSaveClick('M_Occupation')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.M_Occupation}</span>
-            <button onClick={() => handleEditClick('M_Occupation')}>Edit</button>
+        
           </>
         )}
       </div>
+            <div className="btn my-custom-btn">
      
-     
-     {editMode.fambackground? (
-       <>
-     
-   
-
-          
-         <button onClick={() => handleSaveClick('fambackground')}>Save</button>
-       </>
-     ) : (
-       <>
-       
-         <button onClick={() => handleEditClick('fambackground')}>Edit</button>
-       </>
-     )}
-   </div>
-
      {editMode.fambackground? (
        <>
      
@@ -647,77 +625,96 @@ import {
         );
       case 3:
         return (
-          <div className="content-active">
+          <div className="content active">
             <h1>Educational Background</h1>
             <div className="employee-info">
               <div className="details">
 
               <div className="form-group">
         <label>Tertiary:</label>
-        {editMode.tertiary ? (
+        {editMode.educbackground ? (
           <>
             <input
               type="text"
-              name="tertiary"
+              name="father"
               value={formData.tertiary}
               onChange={(e) => handleInputChange(e, 'tertiary')}
             />
 
              
-            <button onClick={() => handleSaveClick('tertiary')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.tertiary}</span>
-            <button onClick={() => handleEditClick('tertiary')}>Edit</button>
+        
           </>
         )}
       </div>
 
+         
       <div className="form-group">
         <label>Secondary:</label>
-        {editMode.secondary ? (
+        {editMode.educbackground ? (
           <>
             <input
               type="text"
-              name="secondary"
+              name="father"
               value={formData.secondary}
-              onChange={(e) => handleInputChange(e, 'secondaryy')}
+              onChange={(e) => handleInputChange(e, 'secondary')}
             />
 
              
-            <button onClick={() => handleSaveClick('secondary')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.secondary}</span>
-            <button onClick={() => handleEditClick('secondary')}>Edit</button>
+        
           </>
         )}
       </div>
 
       <div className="form-group">
         <label>Primary:</label>
-        {editMode.primary? (
+        {editMode.educbackground ? (
           <>
             <input
               type="text"
-              name="primary"
+              name="father"
               value={formData.primary}
               onChange={(e) => handleInputChange(e, 'primary')}
             />
 
              
-            <button onClick={() => handleSaveClick('primary')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.primary}</span>
-            <button onClick={() => handleEditClick('primary')}>Edit</button>
+        
           </>
         )}
       </div>
+            <div className="btn my-custom-btn">
+     
+     {editMode.educbackground? (
+       <>
+     
+   
 
+          
+         <button onClick={() => handleSaveClick('educbackground')}>Save</button>
+       </>
+     ) : (
+       <>
+       
+         <button onClick={() => handleEditClick('educbackground')}>Edit</button>
+       </>
+     )}
+   </div>
+
+             
          
               </div>
             </div>
@@ -725,99 +722,117 @@ import {
         );
       case 4:
         return (
-          <div className="content-active">
+          <div className="content active">
             <h1>Medical Information</h1>
             <div className="employee-info">
               <div className="details">
 
-             
-      <div className="form-group">
+               
+              <div className="form-group">
         <label>Height:</label>
-        {editMode.height? (
+        {editMode.medBackground ? (
           <>
             <input
               type="text"
-              name="height"
+              name="father"
               value={formData.height}
               onChange={(e) => handleInputChange(e, 'height')}
             />
 
              
-            <button onClick={() => handleSaveClick('height')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.height}</span>
-            <button onClick={() => handleEditClick('height')}>Edit</button>
+        
           </>
         )}
       </div>
 
       <div className="form-group">
         <label>Weight:</label>
-        {editMode.weight? (
+        {editMode.medBackground ? (
           <>
             <input
               type="text"
-              name="weight"
-              value={formData.height}
+              name="father"
+              value={formData.weight}
               onChange={(e) => handleInputChange(e, 'weight')}
             />
 
              
-            <button onClick={() => handleSaveClick('weight')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.weight}</span>
-            <button onClick={() => handleEditClick('weight')}>Edit</button>
+        
           </>
         )}
       </div>
 
       <div className="form-group">
-        <label>Blood Type:</label>
-        {editMode.blood? (
+        <label>Blood:</label>
+        {editMode.medBackground ? (
           <>
             <input
               type="text"
-              name="blood"
+              name="father"
               value={formData.blood}
               onChange={(e) => handleInputChange(e, 'blood')}
             />
 
              
-            <button onClick={() => handleSaveClick('blood')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.blood}</span>
-            <button onClick={() => handleEditClick('blood')}>Edit</button>
+        
           </>
         )}
       </div>
       <div className="form-group">
         <label>Medical History:</label>
-        {editMode.med_his? (
+        {editMode.medBackground ? (
           <>
             <input
               type="text"
-              name="med_his"
+              name="father"
               value={formData.med_his}
               onChange={(e) => handleInputChange(e, 'med_his')}
             />
 
              
-            <button onClick={() => handleSaveClick('med_his')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.med_his}</span>
-            <button onClick={() => handleEditClick('med_his')}>Edit</button>
+        
           </>
         )}
       </div>
+            <div className="btn my-custom-btn">
+     
+     {editMode.medBackground? (
+       <>
+     
+   
 
+          
+         <button onClick={() => handleSaveClick('medBackground')}>Save</button>
+       </>
+     ) : (
+       <>
+       
+         <button onClick={() => handleEditClick('medBackground')}>Edit</button>
+       </>
+     )}
+   </div>
+
+         
 
               </div>
             </div>
@@ -825,15 +840,15 @@ import {
         );
       case 5:
         return (
-          <div className="content-active">
+          <div className="content active">
             <h1>Skills & Hobbies</h1>
             <div className="employee-info">
               <div className="details">
 
 
               <div className="form-group">
-        <label>Skills:</label>
-        {editMode.skill? (
+              <label>Skill</label>
+        {editMode.skillhobby ? (
           <>
             <input
               type="text"
@@ -843,47 +858,41 @@ import {
             />
 
              
-            <button onClick={() => handleSaveClick('skill')}>Save</button>
+   
           </>
         ) : (
           <>
             <span>{formData.skill}</span>
-            <button onClick={() => handleEditClick('skill')}>Edit</button>
+      
           </>
         )}
       </div>
+     
 
 
-      <div className="form-group">
-        <label>Hobbies:</label>
-        {editMode.hobbies? (
+
+
+            <div className="form-group">
+            <label>Hobbies</label>
+        {editMode.skillhobby? (
           <>
             <input
               type="text"
-              name="hobbies"
+              name="hobby"
               value={formData.hobbies}
               onChange={(e) => handleInputChange(e, 'hobbies')}
             />
 
              
-            <button onClick={() => handleSaveClick('hobbies')}>Save</button>
+           
           </>
         ) : (
           <>
             <span>{formData.hobbies}</span>
-            <button onClick={() => handleEditClick('hobbies')}>Edit</button>
+
           </>
         )}
             </div>
-            </div>
-            <div className="btn my-custom-btn">
-     
-     {editMode.skillhobby? (
-       <>
-     
-   
-
-      </div>
             <div className="btn my-custom-btn">
      
      {editMode.skillhobby? (
@@ -892,30 +901,18 @@ import {
    
 
           
-          
-         <button onClick={() => handleSaveClick('skillhobby')}>Save</button>
-       </>
-     ) : (
-       <>
-
          <button onClick={() => handleSaveClick('skillhobby')}>Save</button>
        </>
      ) : (
        <>
        
-       
          <button onClick={() => handleEditClick('skillhobby')}>Edit</button>
        </>
      )}
-
-         <button onClick={() => handleEditClick('skillhobby')}>Edit</button>
-       </>
-     )}
+   </div>
               </div>
             </div>
-          
           </div>
-         
         );
       default:
         return null;
@@ -999,7 +996,64 @@ import {
                 <th>Position</th>
                 <th>Status</th>
 
-
+                <th>EDIT</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item) => (
+                <tr key={item.ID}>
+                  <td>{item.requesterName}</td>
+                  <td>{item.position}</td>
+                  <td>{item.ID}</td>
+                  <td>
+                    <FontAwesomeIcon
+                      icon={faCircle}
+                      className="fas-status"
+                      style={{ color: getStatusColor(item.accountstatus) }}
+                    />
+                  </td>
+                  <td>
+                    <button className="i" onClick={handleSwitchUIMode}>
+                      <FontAwesomeIcon icon={faFileEdit} className="fass" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div>
+          <div className="box1">
+            <p>Employee Information</p>
+          </div>
+          <div className="box2">
+            <ul style={{ listStyle: "none" }}>
+              <p>Employee Information </p>
+              {navItems.map((item, index) => (
+                <li key={index}>
+                  <a onClick={() => handleNavItemClick(index)}>
+                    <FontAwesomeIcon
+                      icon={getIconForNavItem(index)}
+                      className="fas"
+                    />
+                    <span
+                      className={`nav-item ${
+                        index === activeNavItem ? "active" : ""
+                      }`}
+                    >
+                      {item}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="box3">
+            {renderContentForNavItem(activeNavItem)}
+            <div className="search-form">
+              <form>
+                <input type="text" id="search-input" />
 
                 <button type="button" onClick={() => {}}>
                   Search
@@ -1018,24 +1072,4 @@ import {
       )}
     </div>
   );
-        
-                <button type="button" onClick={() => {}}>
-                  Search
-                </button>
-              </form>
-            </div>
-            <div className="previous">
-              <button onClick={handleSwitchUIMode}>
-                {" "}
-                <FontAwesomeIcon icon={faLeftLong} className="fas-back" />
-                <p>Previous</p>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-    }
-  }
-};
+}
