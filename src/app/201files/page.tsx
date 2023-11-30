@@ -191,7 +191,6 @@ export default  function Files(){
                         <p>Attachment</p>
                         <div>
                         <div className="file-form">
-                            
                 <input
                     type="file"
                     id="fileInput"

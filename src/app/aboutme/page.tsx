@@ -711,7 +711,6 @@ export default function AboutMePage() {
               <div className="form-group">
               <label>Skill</label>
         {editMode.skillhobby ? (
-   
           <>
             <input
               type="text"

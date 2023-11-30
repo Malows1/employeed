@@ -12,7 +12,6 @@ import {
 	faCertificate
 } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-import Swal from 'sweetalert2';
 
 export default function Time() {
 	const [currentDateTime, setCurrentDateTime] = useState(new Date());
@@ -27,42 +26,7 @@ export default function Time() {
 	}, []);
   
 	const handleTimeInClick = () => {
-
-		try{
-			Swal.fire({
-				position: 'top-end', // Position to top-end
-				icon: 'success',
-				title: 'Time In Successfully!',
-				showConfirmButton: false,
-				timer: 2000,
-				toast: true, // Enable toast mode
-				background: '#efefef',
-				showClass: {
-					popup: 'animate__animated animate__fadeInDown',
-				},
-				hideClass: {
-					popup: 'animate__animated animate__fadeOutUp',
-				},
-			});
-		}catch(error: any){
-			Swal.fire({
-				position: 'top-end', // Position to top-end
-				icon: 'error',
-				title: 'Unsuccessful Time In!',
-				showConfirmButton: false,
-				timer: 2000,
-				toast: true, // Enable toast mode
-				background: '#efefef',
-				showClass: {
-					popup: 'animate__animated animate__fadeInDown',
-				},
-				hideClass: {
-					popup: 'animate__animated animate__fadeOutUp',
-				},
-			});
-		}
 	  setIsTimeIn(true);
-
 	};
   
 	const handleTimeOutClick = () => {
@@ -98,15 +62,7 @@ export default function Time() {
 							</span>
 						</a>
 					</li>
-					<li>
-						<a href="/time">
-							<FontAwesomeIcon
-								icon={faClock}
-								className="fas"
-							/>
-							<span className="nav-item">TimeIn</span>
-						</a>
-					</li>
+
 					<li>
 						<a href="/dashboard">
 							<FontAwesomeIcon
@@ -137,7 +93,15 @@ export default function Time() {
 						</a>
 					</li>
                     
-				
+					<li>
+						<a href="/time">
+							<FontAwesomeIcon
+								icon={faClock}
+								className="fas"
+							/>
+							<span className="nav-item">TimeIn</span>
+						</a>
+					</li>
 					<li>
 						<a href="/coe">
 							<FontAwesomeIcon

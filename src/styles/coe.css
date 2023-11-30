@@ -30,7 +30,7 @@ body {
 }
 
 .Sidebar a {
-  padding: 5px;
+  padding: 7px;
   display: block;
   color: #ffffff; /* Dark Gray */
   text-decoration: none;
@@ -40,6 +40,8 @@ body {
 .Sidebar a:hover {
   background-color: #666; /* Gray */
 }
+
+
 .logo {
   text-align: center;
   display: flex;
@@ -109,8 +111,7 @@ a {
   font-weight: bold;
   margin-top: 30px;
   padding: 8px;
-  position: relative;
-  left: -14px;
+  
   color: #fff; 
 
   font-size: 18px;
@@ -128,16 +129,13 @@ a {
 }
 
 
-a {
-  position: relative;
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  display: table;
 
-  padding: 12px;
-}
+
+
+
+
 .logout{
-  width: 100%;
+  width: 198.9px;
     position: absolute ;
     bottom: 0;
 }
@@ -145,11 +143,8 @@ a {
 
 
 
-/* coe.css */
-input{
-  border: 1px solid gray;
- font-weight: bold;
-}
+
+/* payslip.css */
 
 .center-wrapper {
  

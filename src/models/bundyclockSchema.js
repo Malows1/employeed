@@ -1,10 +1,6 @@
 import mongoose from 'mongoose';
 
 const times = new mongoose.Schema({
-    name : {
-        type: String,
-        required: true,
-    },
     employee_id: {
         type: String,
         required: true,

@@ -169,18 +169,7 @@ const PDFGenerator = () => {
           </li>
 
           {/* Navigation links */}
-
           <li>
-						<a href="/time">
-							<FontAwesomeIcon
-								icon={faClock}
-								className="fas"
-							/>
-							<span className="nav-item">TimeIn</span>
-						</a>
-					</li>
-          <li>
-
             <a href="/dashboard">
               <FontAwesomeIcon icon={faClipboardUser} className="fas" />
               <span className="nav-item">Attendance</span>
@@ -206,10 +195,9 @@ const PDFGenerator = () => {
 								icon={faClock}
 								className="fas"
 							/>
-							<span className="nav-item">Time In</span>
+							<span className="nav-item">TimeIn</span>
 						</a>
 					</li>
-      
 
 
           <li>

@@ -7,13 +7,10 @@ import { toast } from "react-hot-toast";
 import Swal from 'sweetalert2';
 export default function LoginPage() {
   const router = useRouter();
-  const [user, setUser] = useState({ name: '', password: '' });
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
-
+  const [user, setUser] = React.useState({
+    name: "",
+    password: "",
+  });
 
   const [buttonDisabled, setButtonDisabled] = React.useState(true);
   const [loading, setLoading] = React.useState(false);
