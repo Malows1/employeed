@@ -18,12 +18,13 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Image from 'next/image';
+import Swal from "sweetalert2";
 export default function Addnew() {
   const router = useRouter();
   const [user, setUser] = React.useState({
     name: "",
     employee_id: "",
-    password: "asd1",
+    password: "",
     phone: "",
     address: "",
     position: "",
@@ -36,11 +37,40 @@ export default function Addnew() {
     try {
       setLoading(true);
       const response = await axios.post("/api/users/addemployee", user);
-      console.log("Signup Success", response.data);
-      toast.success("Signup Success");
-      window.location.href = "/admin";
+     
+      Swal.fire({
+				position: 'top-end', // Position to top-end
+				icon: 'success',
+				title: 'Save Success',
+				showConfirmButton: false,
+				timer: 2000,
+				toast: true, // Enable toast mode
+				background: '#efefef',
+				showClass: {
+					popup: 'animate__animated animate__fadeInDown',
+				},
+				hideClass: {
+					popup: 'animate__animated animate__fadeOutUp',
+				},
+			});
+      window.location.href = "/addemployee";
     } catch (error: any) {
       toast.error(error.message);
+      Swal.fire({
+				position: 'top-end', // Position to top-end
+				icon: 'error',
+				title: 'Unsuccessful Save!',
+				showConfirmButton: false,
+				timer: 2000,
+				toast: true, // Enable toast mode
+				background: '#efefef',
+				showClass: {
+					popup: 'animate__animated animate__fadeInDown',
+				},
+				hideClass: {
+					popup: 'animate__animated animate__fadeOutUp',
+				},
+			});
     } finally {
       setLoading(false);
     }
@@ -248,6 +278,17 @@ export default function Addnew() {
                     </td>
                   </tr>
                   <tr className="row">
+                    <td>Email</td>
+                    <td>
+                      <input
+                        type="email"
+                        
+                        id="email"
+                      
+                      />
+                    </td>
+                  </tr>
+                  <tr className="row">
                     <td>Phone No.</td>
                     <td>
                       <input
@@ -273,13 +314,7 @@ export default function Addnew() {
                       />
                     </td>
                   </tr>
-                  <tr className="row">
-                    <td> Contract of Employee </td>
-                    <td> <select onChange={handleContractTypeChange}>
-            <option value="Regular"> Fixed term contract</option>
-            <option value="Contract">probationary contract</option>
-            </select></td>
-                  </tr>
+                
 
               
                        

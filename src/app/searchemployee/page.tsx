@@ -106,7 +106,6 @@ export default function About() {
       ...editMode,
       [fieldName]: false,
     });
-  
   };
   const handleInputChange = (e, fieldName) => {
     const { value } = e.target;
@@ -866,12 +865,7 @@ export default function About() {
       
           </>
         )}
-      </div>
-     
-
-
-
-
+            </div>
             <div className="form-group">
             <label>Hobbies</label>
         {editMode.skillhobby? (

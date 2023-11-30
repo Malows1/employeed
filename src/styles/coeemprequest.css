@@ -28,11 +28,10 @@ body {
   box-shadow: 0 0 11px rgba(0, 0, 0, 0.3);
 }
 
-
 .Sidebar a {
-  padding: 7px;
+  padding: 5px;
   display: block;
-  color: #ffffff; 
+  color: #ffffff; /* Dark Gray */
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
@@ -40,7 +39,6 @@ body {
 .Sidebar a:hover {
   background-color: #666; /* Gray */
 }
-
 .logo {
   text-align: center;
   display: flex;
@@ -69,12 +67,11 @@ margin-left: 70px;}
 
 a {
   position: relative;
-  color: #333; /* Dark Gray */
+  color: #fff; 
   font-size: 18px;
-  display: block;
-  padding: 12px 20px;
+  display: block; 
+  padding: 12px 20px; 
 }
-
 
 .fas {
   position: relative;
@@ -111,7 +108,8 @@ a {
   font-weight: bold;
   margin-top: 30px;
   padding: 8px;
-  
+  position: relative;
+  left: -14px;
   color: #fff; 
 
   font-size: 18px;
@@ -129,13 +127,16 @@ a {
 }
 
 
+a {
+  position: relative;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  display: table;
 
-
-
-
-
+  padding: 12px;
+}
 .logout{
-  width: 198.9px;
+  width: 100%;
     position: absolute ;
     bottom: 0;
 }
@@ -239,42 +240,3 @@ select{
   width: 20px;
 }
 
-@media (max-width: 1680px) {
-  .Sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 250px;
-    background: #333; /* Dark Gray */
-    color: #fff; /* White text on dark background */
-    overflow-y: auto;
-    box-shadow: 0 0 11px rgba(0, 0, 0, 0.3);
-  }
-  
-
-
- .fas {
-   position: relative;
-   width: 30px;
-   height: 30px;
-   margin-top: 28px;
- 
- }
- 
- .Sidebar a:hover {
-  background-color: #666; /* Gray */
-}
-
-.table-container {
-  position: absolute;
-  top:59.9%;
-  left: 50%;
-  transform: translate(-71%, -50%); 
-  
-}
-
-}
-
-
-  

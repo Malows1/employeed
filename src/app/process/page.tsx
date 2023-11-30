@@ -17,6 +17,7 @@ import {
   faSearch
 } from '@fortawesome/free-solid-svg-icons';
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function ProcessPage() {
 
@@ -118,11 +119,40 @@ export default function ProcessPage() {
       console.log("Saved & Submit successfully", response.data);
       toast.success("Saved & Submit successfully");
 
-      // Redirect to the dashboard page after successful login
+      Swal.fire({
+				position: 'top-end', // Position to top-end
+				icon: 'success',
+				title: 'Save Successfully!',
+				showConfirmButton: false,
+				timer: 2000,
+				toast: true, // Enable toast mode
+				background: '#efefef',
+				showClass: {
+					popup: 'animate__animated animate__fadeInDown',
+				},
+				hideClass: {
+					popup: 'animate__animated animate__fadeOutUp',
+				},
+			});
       window.location.href = "/admin";
     } catch (error: any) {
       console.log("Processing Payslip", error.message);
       toast.error(error.message);
+      Swal.fire({
+				position: 'top-end', // Position to top-end
+				icon: 'error',
+				title: 'Unsuccessful Save!',
+				showConfirmButton: false,
+				timer: 2000,
+				toast: true, // Enable toast mode
+				background: '#efefef',
+				showClass: {
+					popup: 'animate__animated animate__fadeInDown',
+				},
+				hideClass: {
+					popup: 'animate__animated animate__fadeOutUp',
+				},
+			});
     } finally {
       setLoading(false);
     }
@@ -136,16 +166,15 @@ export default function ProcessPage() {
   }, [payslipData]);
   const getAttendanceData = async () => {
     try {
-      const res = await axios.get('/api/users/process'); // Replace with your actual endpoint
-      setuserData(res.data.user); // Assuming the response contains an array of attendance data
+      const res = await axios.get('/api/users/process'); 
+      setuserData(res.data.user); 
       
     } catch (error: any) {
       console.error(error.message);
     }
   };
   useEffect(() => {
-    getAttendanceData(); // Fetch attendance data when the component mounts
-    
+    getAttendanceData(); 
   }, []);
   return (
     <div>
@@ -384,8 +413,9 @@ export default function ProcessPage() {
         </div>
         <div className="new-btn">
           <button className="btn-save"
-            onClick={() => onSaveandSubmit()}
-          > <FontAwesomeIcon icon={faEnvelope} className="fass" />Save & Submit </button>
+            onClick={() => onSaveandSubmit()} 
+          > 
+          <FontAwesomeIcon icon={faEnvelope} className="fass" />Save & Submit </button>
 
         </div>
       </div>

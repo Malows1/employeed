@@ -1,5 +1,5 @@
 "use client";
-import React, {useRef}from 'react';
+import React, {useRef, useState}from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'src/styles/files.css';
 import {
@@ -31,13 +31,23 @@ export default  function Files(){
     
     
 
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const selectedFile = event.target.files?.[0];
-        if (selectedFile) {
-            // Handle the selected file here
-            console.log('Selected file:', selectedFile);
-        }
-    };
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+
+    if (file) {
+      // Update the component state with the selected file
+      setSelectedFile(file);
+
+      // You can also perform other operations with the file if needed
+      console.log('Selected file:', file);
+    }
+  };
+  const removeFile = () => {
+    // Remove the selected file by setting it to null
+    setSelectedFile(null);
+  };
     const logout = async () => {
         try{
            await axios.get('/api/users/logout')
@@ -69,7 +79,15 @@ export default  function Files(){
                             <span className="nav-e">Employee</span>
                         </a>
                     </li>
-
+   <li>
+						<a href="/time">
+							<FontAwesomeIcon
+								icon={faClock}
+								className="fas"
+							/>
+							<span className="nav-item">TimeIn</span>
+						</a>
+					</li>
                     <li>
                         <a href="/dashboard">
                             <FontAwesomeIcon icon={faClipboardUser} className="fas" />
@@ -91,15 +109,7 @@ export default  function Files(){
                             <span className="nav-item">201 files</span>
                         </a>
                     </li>
-                    <li>
-						<a href="/time">
-							<FontAwesomeIcon
-								icon={faClock}
-								className="fas"
-							/>
-							<span className="nav-item">TimeIn</span>
-						</a>
-					</li>
+                 
                     
                     <li>
 						<a href="/coe">
@@ -188,9 +198,17 @@ export default  function Files(){
                             <button >Send Note</button>
                         </div>
 
-                        <p>Attachment</p>
+                        <p>Attachment: {selectedFile?.name} {selectedFile && (
+        
+        <button onClick={removeFile} style={{ color: 'red', textTransform: 'lowercase' }}>Remove File</button>
+
+
+      
+    )}</p>
+                        
                         <div>
                         <div className="file-form">
+                            
                 <input
                     type="file"
                     id="fileInput"

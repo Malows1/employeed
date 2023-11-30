@@ -150,11 +150,12 @@ a {
 }
 
 
+
 .outer{
   position: relative;
   top: 10px;
     width: 1000px;
-    height:597px;
+    height:694px;
     margin-left: 32%;
     margin-right: 55px;
     margin-bottom: 350px;
@@ -185,7 +186,7 @@ th {
 /* Center the table */
 .table-container {
     position: absolute;
-    top: 50%;
+    top: 56%;
     left: 50%;
     transform: translate(-71%, -50%); /* Adjust the margin as needed */
     
@@ -259,7 +260,9 @@ p{
 }
 
 
-
+input{
+  padding:10px;
+}
 .file-form button {
     padding: 8px 15px;
     font-size: 16px;

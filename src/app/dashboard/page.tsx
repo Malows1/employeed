@@ -136,7 +136,15 @@ export default function DashboardPage() {
 							</span>
 						</a>
 					</li>
-
+					<li>
+						<a href="/time">
+							<FontAwesomeIcon
+								icon={faClock}
+								className="fas"
+							/>
+							<span className="nav-item">TimeIn</span>
+						</a>
+					</li>
 					<li>
 						<a href="/dashboard">
 							<FontAwesomeIcon
@@ -172,9 +180,10 @@ export default function DashboardPage() {
 								icon={faClock}
 								className="fas"
 							/>
-							<span className="nav-item">TimeIn</span>
+							<span className="nav-item">Time In</span>
 						</a>
 					</li>
+					
 					<li>
 						<a href="/coe">
 							<FontAwesomeIcon

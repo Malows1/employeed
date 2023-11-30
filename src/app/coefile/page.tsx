@@ -93,6 +93,15 @@ export default function Coe() {
 							</span>
 						</a>
 					</li>
+					<li>
+						<a href="/time">
+							<FontAwesomeIcon
+								icon={faClock}
+								className="fas"
+							/>
+							<span className="nav-item">TimeIn</span>
+						</a>
+					</li>
 
 					<li>
 						<a href="/dashboard">
@@ -123,16 +132,7 @@ export default function Coe() {
 							<span className="nav-item">201 files</span>
 						</a>
 					</li>
-					<li>
-						<a href="/time">
-							<FontAwesomeIcon
-								icon={faClock}
-								className="fas"
-							/>
-							<span className="nav-item">TimeIn</span>
-						</a>
-					</li>
-
+				
                     <li>
 						<a href="/coe">
 							<FontAwesomeIcon

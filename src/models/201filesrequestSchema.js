@@ -1,18 +1,37 @@
 import mongoose from 'mongoose';
 
-const zzz = new mongoose.Schema({
+const requestfiles = new mongoose.Schema({
+    request_id: {
+      type: String,
+      unique: true,
+    },
+    employee_id: {
+      type: String,
+    },
     name: {
         type: String,
         required: true,
     },
-    employee_id: {
-        type: String,
-        default: '',
+    date: {
+        type: Date,
     },
-    requested_file: {
-        type: String,
-        default: '',
+    position:{
+        type: Date,
     },
+    fileInfo: {
+        filename: {
+          type: String,
+          default: '',
+        },
+        contentType: {
+          type: String,
+          default: '',
+        },
+        data: {
+          type: Buffer,
+          default: Buffer.from(''),
+        },
+      },    
     description: {
         type: String,
         default: '',
@@ -21,13 +40,10 @@ const zzz = new mongoose.Schema({
         type: String,
         default: '',
     },
-    date: {
-        type: Date,
-        
-    }
+    
 });
 
 
-const bundy = mongoose.models.zzz || mongoose.model('times', zzz);
+const requestfile = mongoose.models.requestfiles || mongoose.model('201files', requestfiles);
 
-export default bundy;
+export default requestfile;

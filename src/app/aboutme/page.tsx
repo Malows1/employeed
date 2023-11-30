@@ -81,7 +81,7 @@ export default function AboutMePage() {
     fname: '',
     status: '',
     religion: '',
-    birthpalce:'',
+    birthplace:'',
     Phone:'',
     gender:'',
   //address info
@@ -197,7 +197,7 @@ export default function AboutMePage() {
           </li>
 
           <li>
-            <a href="/logins" className="logout">
+            <a href="/login" className="logout">
               <FontAwesomeIcon icon={faRightFromBracket} className="fas" />
               <span className="nav-item">Log-Out</span>
             </a>
@@ -242,10 +242,9 @@ export default function AboutMePage() {
     switch (index) {
       case 0:
         return (
-          <div className="content active">
+          <div className="content-active">
             <h1>Basic Information</h1>
             <div className="employee-info">
-
               <div className="details">
               <div className="form-group">
             <label>Full Name: </label>
@@ -272,15 +271,15 @@ export default function AboutMePage() {
             <input
               type="text"
               name="birthplace"
-              value={formData.birthpalce}
-              onChange={(e) => handleInputChange(e, 'birthpalce')}
+              value={formData.birthplace}
+              onChange={(e) => handleInputChange(e, 'birthplace')}
             />
 
 
           </>
         ) : (
           <>
- <span>{formData.birthpalce}</span>
+ <span>{formData.birthplace}</span>
           </>
         )}
       </div>
@@ -362,12 +361,11 @@ export default function AboutMePage() {
             <button onClick={() => handleEditClick('basicinfo')}>Edit</button>
           </>
         )}
-      </div>
-              </div>
-            </div>
-          </div>
-        );
-
+  </div>
+  </div>
+  </div>
+  </div>
+    );
 
       case 1:
         return (
@@ -383,7 +381,7 @@ export default function AboutMePage() {
             <input
               type="text"
               name="blk"
-              value={formData.blk}
+              
               onChange={(e) => handleInputChange(e, 'blk')}
             />
 
@@ -404,7 +402,7 @@ export default function AboutMePage() {
             <input
               type="text"
               name="street"
-              value={formData.street}
+              
               onChange={(e) => handleInputChange(e, 'street')}
             />
 
@@ -413,6 +411,8 @@ export default function AboutMePage() {
           </>
         ) : (
           <>
+            <span>{formData.street}</span>
+         
             <span>{formData.street}</span>
          
           </>
@@ -425,7 +425,7 @@ export default function AboutMePage() {
             <input
               type="text"
               name="barangay"
-              value={formData.barangay}
+              
               onChange={(e) => handleInputChange(e, 'barangay')}
             />
 
@@ -446,7 +446,7 @@ export default function AboutMePage() {
             <input
               type="text"
               name="city"
-              value={formData.city}
+              
               onChange={(e) => handleInputChange(e, 'city')}
             />
 
@@ -552,6 +552,7 @@ export default function AboutMePage() {
         ) : (
           <>
             <span>{formData.father}</span>
+            
             
           </>
         )}
